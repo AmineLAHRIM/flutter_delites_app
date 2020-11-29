@@ -15,9 +15,13 @@ class AppTheme {
   static const Color subTitleTextColor = Color(0xFF8F9BB3);
   static const Color bg = Color(0xFFFFFFFF);
   static const Color secondaryBg = Color(0xFFF5F8FD);
+  static const Color shadow = Color(0xFFEDF1F7);
+  static const Color fb = Color(0xFF0041A8);
+  static const Color twitter = Color(0xFF42AAFF);
+  static const Color google = Color(0xFFF2F8FF);
 
   static final ThemeData lightTheme = ThemeData(
-    scaffoldBackgroundColor: AppTheme.secondaryBg,
+    scaffoldBackgroundColor: AppTheme.bg,
     backgroundColor: AppTheme.bg,
     brightness: Brightness.light,
     textTheme: lightTextTheme,
@@ -55,50 +59,58 @@ class AppTheme {
 
   static final TextStyle _headline1 = TextStyle(
     color: AppTheme.headlineTextColor,
-    fontSize: 3.5 * SizeConfig.textMultiplier,
+    fontWeight: FontWeight.w900,
+    fontFamily: "SFProDisplay",
+    fontSize: 4.0 * SizeConfig.textMultiplier,
   );
   static final TextStyle _headline2 = TextStyle(
+    fontWeight: FontWeight.w600,
+    fontFamily: "SFProDisplay",
     color: AppTheme.headlineTextColor,
-    fontSize: 3.0 * SizeConfig.textMultiplier,
+    fontSize: 3.5 * SizeConfig.textMultiplier,
   );
   static final TextStyle _headline3 = TextStyle(
     color: AppTheme.headlineTextColor,
-    fontSize: 2.5 * SizeConfig.textMultiplier,
+    fontWeight: FontWeight.w600,
+    fontFamily: "SFProDisplay",
+    fontSize: 3.0 * SizeConfig.textMultiplier,
   );
   static final TextStyle _headline4 = TextStyle(
     color: AppTheme.headlineTextColor,
-    fontSize: 2.0 * SizeConfig.textMultiplier,
+    fontWeight: FontWeight.w600,
+    fontFamily: "SFProDisplay",
+    fontSize: 2.5 * SizeConfig.textMultiplier,
   );
 
   static final TextStyle _button = TextStyle(
     color: Colors.white,
     fontWeight: FontWeight.w600,
+    fontFamily: "SFProDisplay",
     fontSize: 2.0 * SizeConfig.textMultiplier,
   );
 
   static final TextStyle _subtitle1 = TextStyle(
     color: AppTheme.subTitleTextColor,
+    fontWeight: FontWeight.w600,
+    fontFamily: "SFProDisplay",
     fontSize: 2.0 * SizeConfig.textMultiplier,
-    height: 1.5,
   );
 
   static final TextStyle _subtitle2 = TextStyle(
     color: AppTheme.subTitleTextColor,
+    fontFamily: "SFProDisplay",
     fontSize: 2.0 * SizeConfig.textMultiplier,
   );
 
   static final TextStyle _bodyText1 = TextStyle(
     color: AppTheme.primary,
-    fontWeight: FontWeight.w600,
+    fontFamily: "SFProDisplay",
     fontSize: 2 * SizeConfig.textMultiplier,
   );
 
   static final TextStyle _bodyText2 = TextStyle(
     color: AppTheme.secondary,
-    fontWeight: FontWeight.normal,
+    fontFamily: "SFProDisplay",
     fontSize: 2 * SizeConfig.textMultiplier,
   );
-
-
-
 }
