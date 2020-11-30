@@ -30,7 +30,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                       padding: const EdgeInsets.all(16),
                       child: Container(
                         child: SvgPicture.asset(
-                          'assets/images/back.svg',
+                          'assets/images/icon_back.svg',
                           width: 34,
                         ),
                       ),

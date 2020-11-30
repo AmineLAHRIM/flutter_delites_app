@@ -30,7 +30,7 @@ class ResetPasswordScreen extends StatelessWidget {
                       padding: const EdgeInsets.all(16),
                       child: Container(
                         child: SvgPicture.asset(
-                          'assets/images/back.svg',
+                          'assets/images/icon_back.svg',
                           width: 34,
                         ),
                       ),
@@ -108,7 +108,7 @@ class ResetPasswordScreen extends StatelessWidget {
                                 padding: EdgeInsets.fromLTRB(0, 0, 16, 0),
                                 width: double.infinity,
                                 child: SvgPicture.asset(
-                                  'assets/images/hide_password.svg',
+                                  'assets/images/icon_hide_password.svg',
                                 ),
                               ),
                             ),
@@ -152,7 +152,7 @@ class ResetPasswordScreen extends StatelessWidget {
                                 padding: EdgeInsets.fromLTRB(0, 0, 16, 0),
                                 width: double.infinity,
                                 child: SvgPicture.asset(
-                                  'assets/images/hide_password.svg',
+                                  'assets/images/icon_hide_password.svg',
                                 ),
                               ),
                             ),

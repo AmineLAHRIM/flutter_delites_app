@@ -1,3 +1,4 @@
+import 'package:delites/models/ingredient-category.dart';
 import 'package:delites/models/unit.dart';
 
 class Ingredient{
@@ -8,6 +9,7 @@ class Ingredient{
   double price;
   double promoPrice;
   double shippingPrice;
+  IngredientCategory ingredientCategory;
 }
 
 

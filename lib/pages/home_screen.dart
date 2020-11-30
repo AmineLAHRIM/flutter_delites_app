@@ -222,17 +222,17 @@ class HomeScreen extends StatelessWidget {
                           children: [
                             CircleAvatar(
                               backgroundColor: AppTheme.fb,
-                              child: SvgPicture.asset('assets/images/fb.svg'),
+                              child: SvgPicture.asset('assets/images/icon_fb.svg'),
                             ),
                             CircleAvatar(
                               backgroundColor: AppTheme.twitter,
                               child:
-                                  SvgPicture.asset('assets/images/twitter.svg'),
+                                  SvgPicture.asset('assets/images/icon_twitter.svg'),
                             ),
                             CircleAvatar(
                               backgroundColor: AppTheme.google,
                               child:
-                                  SvgPicture.asset('assets/images/google.svg'),
+                                  SvgPicture.asset('assets/images/icon_google.svg'),
                             ),
                           ],
                         ),
