@@ -261,7 +261,9 @@ class Home extends StatelessWidget {
                                         alignment: Alignment.centerLeft,
                                         child: Text(
                                           'Take Your Pick',
-                                          style: Theme.of(context).textTheme.headline3,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .headline3,
                                         ),
                                       ),
                                     ),
@@ -273,7 +275,9 @@ class Home extends StatelessWidget {
                                         alignment: Alignment.centerRight,
                                         child: Text(
                                           'View All',
-                                          style: Theme.of(context).textTheme.bodyText1,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyText1,
                                         ),
                                       ),
                                     ),
@@ -284,18 +288,76 @@ class Home extends StatelessWidget {
                             Expanded(
                               flex: 85,
                               child: Container(
-                                color: Colors.greenAccent,
                                 child: ListView.builder(
                                   scrollDirection: Axis.horizontal,
-                                  itemCount: recipeService.findByRecipeCategoryId('recipe1').length,
-                                  itemBuilder: (ctx,index){
-                                     List<Recipe> foundedRecipes= recipeService.findByRecipeCategoryId('recipe1');
+                                  itemCount: recipeService
+                                      .findByRecipeCategoryId('recipe1')
+                                      .length,
+                                  itemBuilder: (ctx, index) {
+                                    List<Recipe> foundedRecipes = recipeService
+                                        .findByRecipeCategoryId('recipe1');
                                     return Container(
                                       width: 180,
                                       height: double.infinity,
                                       child: Card(
+                                        clipBehavior: Clip.antiAlias,
                                         shadowColor: AppTheme.borderCard,
-                                        elevation: 2,
+                                        elevation: 0,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(10),
+                                          side: BorderSide(color: AppTheme.borderCard,width: 1.5)
+                                        ),
+                                        child: Container(
+                                          child: Column(
+                                            children: [
+                                              Expanded(
+                                                flex: 80,
+                                                child: Container(
+                                                  child: CachedNetworkImage(
+                                                    imageUrl:
+                                                        foundedRecipes[index]
+                                                            .imageUrl,
+                                                    placeholder: (ctx, url) =>
+                                                        CircularProgressIndicator(),
+                                                    errorWidget:
+                                                        (context, url, error) =>
+                                                            Icon(Icons.error),
+                                                  ),
+                                                ),
+                                              ),
+                                              Expanded(
+                                                flex: 20,
+                                                child: Container(
+                                                  child: Row(
+                                                    children: [
+                                                      Expanded(
+                                                        flex: 80,
+                                                        child: Container(
+                                                          margin: EdgeInsets.only(left: 8),
+                                                          child: Text(
+                                                            foundedRecipes[
+                                                                    index]
+                                                                .name,
+                                                            style: Theme.of(
+                                                                    context)
+                                                                .textTheme
+                                                                .subtitle2,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      Expanded(
+                                                        flex: 20,
+                                                        child: Container(
+                                                          child: Text('test'),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
                                       ),
                                     );
                                   },
