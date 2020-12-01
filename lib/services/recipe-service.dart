@@ -242,13 +242,13 @@ class RecipeService extends ChangeNotifier {
   }
 
   List<Recipe> findByRecipeCategoryId(String id) {
-    return _items.where((element) => element.recipeCategory.id == id);
+    return _items.where((element) => element.recipeCategory.id == id).toList();
   }
 
   List<Recipe> findByTagId(String id) {
     return _items.where((element) {
       Tag foundedTag = element.tags.firstWhere((element2) => element2.id == id);
       return foundedTag != null ? true : false;
-    });
+    }).toList();
   }
 }

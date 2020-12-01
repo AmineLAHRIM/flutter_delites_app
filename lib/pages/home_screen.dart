@@ -1,281 +1,320 @@
-import 'package:delites/pages/forget_password_screen.dart';
-import 'package:delites/pages/register_screen.dart';
-import 'package:delites/pages/verification_screen.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:delites/models/recipe.dart';
+import 'package:delites/models/tag.dart';
+import 'package:delites/services/recipe-service.dart';
+import 'package:delites/services/tag-service.dart';
 import 'package:delites/size_config.dart';
 import 'package:delites/style.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
   static final String routeName = 'home';
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
-    final height = MediaQuery.of(context).size.height;
-
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      body: SafeArea(
-        child: Container(
-          width: width,
-          height: height - MediaQuery.of(context).padding.top,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Expanded(
-                flex: 18,
-                child: FractionallySizedBox(
-                  alignment: Alignment(0, 0.1),
-                  heightFactor: 0.6,
-                  widthFactor: 1,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Flexible(
-                        flex: 60,
-                        child: Container(
-                          child: SvgPicture.asset(
-                            'assets/images/Logo.svg',
-                            fit: BoxFit.contain,
-                          ),
-                        ),
-                      ),
-                      Flexible(
-                        flex: 24,
-                        child: Text(
-                          "Delites",
-                          style: Theme.of(context).textTheme.headline4,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Expanded(
-                flex: 14,
-                child: FractionallySizedBox(
-                  alignment: Alignment.topCenter,
-                  heightFactor: 0.57,
-                  widthFactor: 1,
-                  child: Column(
-                    children: [
-                      Text(
-                        "Welcome back",
-                        style: Theme.of(context).textTheme.headline1,
-                      ),
-                      Text(
-                        "Sign in to continue",
-                        style: Theme.of(context).textTheme.subtitle2,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Expanded(
-                flex: 18,
-                child: Container(
-                  width: double.infinity,
-                  height: double.infinity,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Flexible(
-                        flex: 41,
-                        child: Card(
-                          margin: EdgeInsets.fromLTRB(16, 4, 16, 4),
-                          elevation: 0,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            side:
-                                BorderSide(color: AppTheme.shadow, width: 2.0),
-                          ),
-                          child: Container(
-                            alignment: Alignment.center,
-                            padding: EdgeInsets.symmetric(
-                                vertical: 0, horizontal: 16),
-                            child: TextField(
-                              decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                  hintText: 'Email or Phone Number',
-                                  hintStyle:
-                                      Theme.of(context).textTheme.subtitle2),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Flexible(
-                        flex: 41,
-                        child: Card(
-                          margin: EdgeInsets.fromLTRB(16, 2, 16, 2),
-                          elevation: 0,
-                          shadowColor: AppTheme.shadow,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            side:
-                                BorderSide(color: AppTheme.shadow, width: 2.0),
-                          ),
-                          child: Container(
-                            alignment: Alignment.center,
-                            padding: EdgeInsets.symmetric(
-                                vertical: 0, horizontal: 16),
-                            child: TextField(
-                              decoration: InputDecoration(
-                                border: InputBorder.none,
-                                hintText: 'Password',
-                                hintStyle:
-                                    Theme.of(context).textTheme.subtitle2,
+      body: OrientationBuilder(builder: (ctx, orientation) {
+        return orientation == Orientation.landscape
+            ? SingleChildScrollView(
+                child: Home(),
+              )
+            : Home();
+      }),
+    );
+  }
+}
+
+class Home extends StatelessWidget {
+  const Home({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final tagService = Provider.of<TagService>(context, listen: false);
+    final recipeService = Provider.of<RecipeService>(context, listen: false);
+    final List<Tag> tags = tagService.findAll();
+    final List<Recipe> recipes = recipeService.findAll();
+
+    return SafeArea(
+      child: Container(
+        width: double.infinity,
+        height: SizeConfig.screenHeight - MediaQuery.of(context).padding.top,
+        child: Column(
+          children: [
+            Expanded(
+              flex: 25,
+              child: Container(
+                color: Theme.of(context).scaffoldBackgroundColor,
+                child: Column(
+                  children: [
+                    Expanded(
+                      flex: 50,
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Container(
+                              alignment: Alignment(0.0, 0.0),
+                              child: FractionallySizedBox(
+                                widthFactor: 1,
+                                heightFactor: 0.6,
+                                child: Card(
+                                  margin: EdgeInsets.fromLTRB(16, 4, 16, 4),
+                                  elevation: 0,
+                                  color: AppTheme.secondaryBg,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(16, 0, 8, 0),
+                                    child: Row(
+                                      children: [
+                                        Flexible(
+                                          child: TextField(
+                                            decoration: InputDecoration(
+                                                border: InputBorder.none,
+                                                hintText: 'Find something...',
+                                                hintStyle: Theme.of(context)
+                                                    .textTheme
+                                                    .subtitle2),
+                                          ),
+                                        ),
+                                        Container(
+                                          height: double.infinity,
+                                          child: FractionallySizedBox(
+                                            heightFactor: 0.8,
+                                            child: Card(
+                                              color: AppTheme.primary,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                              ),
+                                              child: AspectRatio(
+                                                aspectRatio: 1 / 1,
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(4.0),
+                                                  child: SvgPicture.asset(
+                                                    'assets/images/icon_search.svg',
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
                               ),
-                              obscureText: true,
-                              enableSuggestions: false,
-                              autocorrect: false,
                             ),
                           ),
-                        ),
-                      ),
-                      Flexible(
-                        flex: 20,
-                        child: Container(
-                          margin:
-                              EdgeInsets.symmetric(vertical: 0, horizontal: 16),
-                          alignment: Alignment.bottomRight,
-                          child: GestureDetector(
-                            onTap: () {
-                              Navigator.of(context)
-                                  .pushNamed(ForgetPasswordScreen.routeName);
-                            },
-                            child: Text(
-                              "Forgot password",
-                              style: Theme.of(context).textTheme.bodyText1,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Expanded(
-                flex: 17,
-                child: Container(
-                  margin: EdgeInsets.fromLTRB(16, 40, 16, 40),
-                  child: RaisedButton(
-                    onPressed: () {
-                      Navigator.of(context).pushNamed(VerificationScreen.routeName);
-                    },
-                    color: AppTheme.primary,
-                    elevation: 2,
-                    textColor: Colors.white,
-                    child: Container(
-                      width: double.infinity,
-                      height: double.infinity,
-                      alignment: Alignment.center,
-                      child: Text(
-                        'Sign In',
-                        style: Theme.of(context)
-                            .textTheme
-                            .subtitle1
-                            .copyWith(color: Colors.white),
+                        ],
                       ),
                     ),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
-                  ),
+                    Expanded(
+                      flex: 50,
+                      child: Container(
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: tags.length,
+                          itemBuilder: (ctx, index) => Container(
+                            width: 120,
+                            child: FractionallySizedBox(
+                              heightFactor: 0.6,
+                              child: Card(
+                                clipBehavior: Clip.antiAlias,
+                                margin: EdgeInsets.fromLTRB(16, 0, 0, 0),
+                                elevation: 0,
+                                color: Color(int.parse(
+                                    '0xFF' + tags[index].bgColor.toString())),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: Stack(
+                                  children: [
+                                    Container(
+                                      width: double.infinity,
+                                      height: double.infinity,
+                                      child: FractionallySizedBox(
+                                        widthFactor: 0.7,
+                                        child: Row(
+                                          children: [
+                                            Expanded(
+                                              flex: 40,
+                                              child: Container(
+                                                padding:
+                                                    EdgeInsets.only(right: 8),
+                                                child: CachedNetworkImage(
+                                                  imageUrl: tags[index].logoUrl,
+                                                  placeholder: (ctx, url) =>
+                                                      CircularProgressIndicator(),
+                                                  errorWidget:
+                                                      (context, url, error) =>
+                                                          Icon(Icons.error),
+                                                ),
+                                              ),
+                                            ),
+                                            Expanded(
+                                              flex: 60,
+                                              child: Text(
+                                                tags[index].name,
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .subtitle1
+                                                    .copyWith(
+                                                        color: Colors.white),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    Positioned.fill(
+                                      child: Material(
+                                        color: Colors.transparent,
+                                        child: InkWell(
+                                          splashFactory:
+                                              InkRipple.splashFactory,
+                                          onTap: () => null,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              Expanded(
-                flex: 12,
-                child: Container(
-                  width: double.infinity,
+            ),
+            Expanded(
+              flex: 65,
+              child: Container(
+                color: AppTheme.secondaryBg,
+                child: SingleChildScrollView(
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
                         width: double.infinity,
-                        margin:
-                            EdgeInsets.symmetric(vertical: 0, horizontal: 16),
-                        child: Stack(
-                          alignment: Alignment.center,
+                        height: 180,
+                        margin: EdgeInsets.fromLTRB(16, 16, 16, 0),
+                        child: Card(
+                          elevation: 4,
+                          clipBehavior: Clip.antiAlias,
+                          shadowColor: AppTheme.borderCard,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Stack(
+                            children: [
+                              Container(
+                                height: double.infinity,
+                                width: double.infinity,
+                                child: CachedNetworkImage(
+                                  imageUrl:
+                                      'https://boostifly.com/uiux/delites/food_menu.png',
+                                  placeholder: (ctx, url) =>
+                                      CircularProgressIndicator(),
+                                  errorWidget: (context, url, error) =>
+                                      Icon(Icons.error),
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                              Positioned.fill(
+                                child: Material(
+                                  color: Colors.transparent,
+                                  child: InkWell(
+                                    splashFactory: InkRipple.splashFactory,
+                                    onTap: () => null,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Container(
+                        width: double.infinity,
+                        height: 180,
+                        margin: EdgeInsets.fromLTRB(16, 16, 16, 0),
+                        child: Column(
                           children: [
-                            SvgPicture.asset(
-                              'assets/images/line.svg',
-                              width: width,
+                            Expanded(
+                              flex: 15,
+                              child: Container(
+                                child: Row(
+                                  children: [
+                                    Expanded(
+                                      flex: 60,
+                                      child: Container(
+                                        height: double.infinity,
+                                        width: double.infinity,
+                                        alignment: Alignment.centerLeft,
+                                        child: Text(
+                                          'Take Your Pick',
+                                          style: Theme.of(context).textTheme.headline3,
+                                        ),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      flex: 40,
+                                      child: Container(
+                                        height: double.infinity,
+                                        width: double.infinity,
+                                        alignment: Alignment.centerRight,
+                                        child: Text(
+                                          'View All',
+                                          style: Theme.of(context).textTheme.bodyText1,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
                             ),
-                            Container(
-                              padding: EdgeInsets.symmetric(
-                                  vertical: 0, horizontal: 16),
-                              color: Theme.of(context).scaffoldBackgroundColor,
-                              child: Text(
-                                'Or',
-                                style: Theme.of(context).textTheme.subtitle2,
+                            Expanded(
+                              flex: 85,
+                              child: Container(
+                                color: Colors.greenAccent,
+                                child: ListView.builder(
+                                  scrollDirection: Axis.horizontal,
+                                  itemCount: recipeService.findByRecipeCategoryId('recipe1').length,
+                                  itemBuilder: (ctx,index){
+                                     List<Recipe> foundedRecipes= recipeService.findByRecipeCategoryId('recipe1');
+                                    return Container(
+                                      width: 180,
+                                      height: double.infinity,
+                                      child: Card(
+                                        shadowColor: AppTheme.borderCard,
+                                        elevation: 2,
+                                      ),
+                                    );
+                                  },
+                                ),
                               ),
                             ),
                           ],
                         ),
                       ),
-                      Container(
-                        margin:
-                            EdgeInsets.symmetric(vertical: 0, horizontal: 82),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            CircleAvatar(
-                              backgroundColor: AppTheme.fb,
-                              child: SvgPicture.asset('assets/images/icon_fb.svg'),
-                            ),
-                            CircleAvatar(
-                              backgroundColor: AppTheme.twitter,
-                              child:
-                                  SvgPicture.asset('assets/images/icon_twitter.svg'),
-                            ),
-                            CircleAvatar(
-                              backgroundColor: AppTheme.google,
-                              child:
-                                  SvgPicture.asset('assets/images/icon_google.svg'),
-                            ),
-                          ],
-                        ),
-                      ),
                     ],
                   ),
                 ),
               ),
-              Expanded(
-                flex: 15,
-                child: Container(
-                  alignment: Alignment(0, 0.2),
-                  width: double.infinity,
-                  height: double.infinity,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 0, 4, 0),
-                        child: Text(
-                          "You don't have an account?",
-                          style: Theme.of(context).textTheme.subtitle2,
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(4, 0, 0, 0),
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.of(context)
-                                .pushNamed(RegisterScreen.routeName);
-                          },
-                          child: Text(
-                            "Sign Up",
-                            style: Theme.of(context).textTheme.bodyText1,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
+            ),
+            Expanded(
+              flex: 10,
+              child: Container(),
+            ),
+          ],
         ),
       ),
     );
