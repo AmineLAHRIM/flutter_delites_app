@@ -12,224 +12,93 @@ class RecipeService extends ChangeNotifier {
         energy: 268,
         imageUrl: 'https://boostifly.com/uiux/delites/eggs.png',
         tags: [
-          Tag(
-              id: 'tag1',
-              name: 'Foods',
-              logoUrl:
-                  'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/meat-on-bone_1f356.png'),
-          Tag(
-              id: 'tag2',
-              name: 'Fruit',
-              logoUrl:
-                  'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/lemon_1f34b.png'),
-          Tag(
-              id: 'tag3',
-              name: 'Healty',
-              logoUrl:
-                  'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/four-leaf-clover_1f340.png'),
+          Tag(id: 'tag1', name: 'Foods', logoUrl: 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/meat-on-bone_1f356.png'),
+          Tag(id: 'tag2', name: 'Fruit', logoUrl: 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/lemon_1f34b.png'),
+          Tag(id: 'tag3', name: 'Healty', logoUrl: 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/four-leaf-clover_1f340.png'),
         ],
         recipeCategory: RecipeCategory(id: 'recipe1', name: 'Take Your Pick')),
     Recipe(
-        id: 'id2',
-        name: 'Fresh Salad Thaid',
-        time: '10',
-        energy: 268,
-        imageUrl: 'https://boostifly.com/uiux/delites/veg1.png',
-        tags: [
-          Tag(
-              id: 'tag3',
-              name: 'Healty',
-              logoUrl:
-                  'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/four-leaf-clover_1f340.png'),
-          Tag(
-              id: 'tag4',
-              name: 'Drink',
-              logoUrl:
-                  'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/beer-mug_1f37a.png')
-        ],
-        recipeCategory: RecipeCategory(id: 'recipe1', name: 'Take Your Pick')),
+      id: 'id2',
+      name: 'Fresh Salad Thaid',
+      time: '10',
+      energy: 268,
+      imageUrl: 'https://boostifly.com/uiux/delites/veg1.png',
+      tags: [Tag(id: 'tag3', name: 'Healty', logoUrl: 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/four-leaf-clover_1f340.png'), Tag(id: 'tag4', name: 'Drink', logoUrl: 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/beer-mug_1f37a.png')],
+      recipeCategory: RecipeCategory(id: 'recipe1', name: 'Take Your Pick'),
+    ),
     Recipe(
-        id: 'id3',
-        name: 'Sweet Potato Pie',
-        time: '10',
-        energy: 268,
-        imageUrl: 'https://boostifly.com/uiux/delites/veg2.png',
-        tags: [
-          Tag(
-              id: 'tag1',
-              name: 'Foods',
-              logoUrl:
-                  'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/meat-on-bone_1f356.png'),
-          Tag(
-              id: 'tag2',
-              name: 'Fruit',
-              logoUrl:
-                  'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/lemon_1f34b.png')
-        ],
-        recipeCategory: RecipeCategory(id: 'recipe1', name: 'Take Your Pick')),
+      id: 'id3',
+      name: 'Sweet Potato Pie',
+      time: '10',
+      energy: 268,
+      imageUrl: 'https://boostifly.com/uiux/delites/veg2.png',
+      tags: [Tag(id: 'tag1', name: 'Foods', logoUrl: 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/meat-on-bone_1f356.png'), Tag(id: 'tag2', name: 'Fruit', logoUrl: 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/lemon_1f34b.png')],
+      recipeCategory: RecipeCategory(id: 'recipe1', name: 'Take Your Pick'),
+    ),
     Recipe(
-        id: 'id4',
-        name: 'Walnut And Nuts',
-        time: '10',
-        energy: 268,
-        imageUrl: 'https://boostifly.com/uiux/delites/walnut_and_nuts.png',
-        tags: [
-          Tag(
-              id: 'tag4',
-              name: 'Drink',
-              logoUrl:
-                  'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/beer-mug_1f37a.png'),
-          Tag(
-              id: 'tag1',
-              name: 'Foods',
-              logoUrl:
-                  'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/meat-on-bone_1f356.png')
-        ],
-        recipeCategory: RecipeCategory(id: 'recipe2', name: 'Breakfast')),
+      id: 'id4',
+      name: 'Walnut And Nuts',
+      time: '10',
+      energy: 268,
+      imageUrl: 'https://boostifly.com/uiux/delites/walnut_and_nuts.png',
+      tags: [Tag(id: 'tag4', name: 'Drink', logoUrl: 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/beer-mug_1f37a.png'), Tag(id: 'tag1', name: 'Foods', logoUrl: 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/meat-on-bone_1f356.png')],
+      recipeCategory: RecipeCategory(id: 'recipe2', name: 'Breakfast'),
+    ),
     Recipe(
-        id: 'id5',
-        name: 'Circle Cake',
-        time: '10',
-        energy: 268,
-        imageUrl: 'https://boostifly.com/uiux/delites/circle_cake.png',
-        tags: [
-          Tag(
-              id: 'tag1',
-              name: 'Foods',
-              logoUrl:
-                  'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/meat-on-bone_1f356.png'),
-          Tag(
-              id: 'tag2',
-              name: 'Fruit',
-              logoUrl:
-                  'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/lemon_1f34b.png'),
-          Tag(
-              id: 'tag4',
-              name: 'Drink',
-              logoUrl:
-                  'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/beer-mug_1f37a.png')
-        ],
-        recipeCategory: RecipeCategory(id: 'recipe3', name: 'Snack')),
+      id: 'id5',
+      name: 'Circle Cake',
+      time: '10',
+      energy: 268,
+      imageUrl: 'https://boostifly.com/uiux/delites/circle_cake.png',
+      tags: [Tag(id: 'tag1', name: 'Foods', logoUrl: 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/meat-on-bone_1f356.png'), Tag(id: 'tag2', name: 'Fruit', logoUrl: 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/lemon_1f34b.png'), Tag(id: 'tag4', name: 'Drink', logoUrl: 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/beer-mug_1f37a.png')],
+      recipeCategory: RecipeCategory(id: 'recipe3', name: 'Snack'),
+    ),
     Recipe(
-        id: 'id6',
-        name: 'Humber',
-        time: '10',
-        energy: 268,
-        imageUrl: 'https://boostifly.com/uiux/delites/humber.png',
-        tags: [
-          Tag(
-              id: 'tag1',
-              name: 'Foods',
-              logoUrl:
-                  'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/meat-on-bone_1f356.png'),
-          Tag(
-              id: 'tag2',
-              name: 'Fruit',
-              logoUrl:
-                  'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/lemon_1f34b.png'),
-          Tag(
-              id: 'tag4',
-              name: 'Drink',
-              logoUrl:
-                  'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/beer-mug_1f37a.png')
-        ],
-        recipeCategory: RecipeCategory(id: 'recipe3', name: 'Snack')),
+      id: 'id6',
+      name: 'Humber',
+      time: '10',
+      energy: 268,
+      imageUrl: 'https://boostifly.com/uiux/delites/humber.png',
+      tags: [Tag(id: 'tag1', name: 'Foods', logoUrl: 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/meat-on-bone_1f356.png'), Tag(id: 'tag2', name: 'Fruit', logoUrl: 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/lemon_1f34b.png'), Tag(id: 'tag4', name: 'Drink', logoUrl: 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/beer-mug_1f37a.png')],
+      recipeCategory: RecipeCategory(id: 'recipe3', name: 'Snack'),
+    ),
     Recipe(
-        id: 'id7',
-        name: 'Salmon Tomato Sauce',
-        time: '10',
-        energy: 268,
-        imageUrl: 'https://boostifly.com/uiux/delites/salmon_tomato_sauce.png',
-        tags: [
-          Tag(
-              id: 'tag1',
-              name: 'Foods',
-              logoUrl:
-                  'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/meat-on-bone_1f356.png'),
-          Tag(
-              id: 'tag2',
-              name: 'Fruit',
-              logoUrl:
-                  'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/lemon_1f34b.png'),
-          Tag(
-              id: 'tag4',
-              name: 'Drink',
-              logoUrl:
-                  'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/beer-mug_1f37a.png')
-        ],
-        recipeCategory: RecipeCategory(id: 'recipe4', name: 'Lunch')),
+      id: 'id7',
+      name: 'Salmon Tomato Sauce',
+      time: '10',
+      energy: 268,
+      imageUrl: 'https://boostifly.com/uiux/delites/salmon_tomato_sauce.png',
+      tags: [Tag(id: 'tag1', name: 'Foods', logoUrl: 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/meat-on-bone_1f356.png'), Tag(id: 'tag2', name: 'Fruit', logoUrl: 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/lemon_1f34b.png'), Tag(id: 'tag4', name: 'Drink', logoUrl: 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/beer-mug_1f37a.png')],
+      recipeCategory: RecipeCategory(id: 'recipe4', name: 'Lunch'),
+    ),
+    Recipe(id: 'id8', name: 'Much', time: '10', energy: 268, imageUrl: 'https://boostifly.com/uiux/delites/much.png', tags: [Tag(id: 'tag1', name: 'Foods', logoUrl: 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/meat-on-bone_1f356.png'), Tag(id: 'tag2', name: 'Fruit', logoUrl: 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/lemon_1f34b.png'), Tag(id: 'tag4', name: 'Drink', logoUrl: 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/beer-mug_1f37a.png')], recipeCategory: RecipeCategory(id: 'recipe4', name: 'Lunch')),
     Recipe(
-        id: 'id8',
-        name: 'Much',
-        time: '10',
-        energy: 268,
-        imageUrl: 'https://boostifly.com/uiux/delites/much.png',
-        tags: [
-          Tag(
-              id: 'tag1',
-              name: 'Foods',
-              logoUrl:
-                  'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/meat-on-bone_1f356.png'),
-          Tag(
-              id: 'tag2',
-              name: 'Fruit',
-              logoUrl:
-                  'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/lemon_1f34b.png'),
-          Tag(
-              id: 'tag4',
-              name: 'Drink',
-              logoUrl:
-                  'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/beer-mug_1f37a.png')
-        ],
-        recipeCategory: RecipeCategory(id: 'recipe4', name: 'Lunch')),
+      id: 'id9',
+      name: 'Fresh Salad Pasta',
+      time: '10',
+      energy: 268,
+      imageUrl: 'https://boostifly.com/uiux/delites/fresh_salad_pasta.png',
+      tags: [Tag(id: 'tag1', name: 'Foods', logoUrl: 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/meat-on-bone_1f356.png'), Tag(id: 'tag2', name: 'Fruit', logoUrl: 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/lemon_1f34b.png'), Tag(id: 'tag4', name: 'Drink', logoUrl: 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/beer-mug_1f37a.png')],
+      recipeCategory: RecipeCategory(id: 'recipe5', name: 'Dinner'),
+    ),
     Recipe(
-        id: 'id9',
-        name: 'Fresh Salad Pasta',
-        time: '10',
-        energy: 268,
-        imageUrl: 'https://boostifly.com/uiux/delites/fresh_salad_pasta.png',
-        tags: [
-          Tag(
-              id: 'tag1',
-              name: 'Foods',
-              logoUrl:
-                  'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/meat-on-bone_1f356.png'),
-          Tag(
-              id: 'tag2',
-              name: 'Fruit',
-              logoUrl:
-                  'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/lemon_1f34b.png'),
-          Tag(
-              id: 'tag4',
-              name: 'Drink',
-              logoUrl:
-                  'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/beer-mug_1f37a.png')
-        ],
-        recipeCategory: RecipeCategory(id: 'recipe5', name: 'Dinner')),
+      id: 'id10',
+      name: 'Japan',
+      time: '10',
+      energy: 268,
+      imageUrl: 'https://boostifly.com/uiux/delites/walnut_and_nuts.png',
+      tags: [Tag(id: 'tag1', name: 'Foods', logoUrl: 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/meat-on-bone_1f356.png'), Tag(id: 'tag2', name: 'Fruit', logoUrl: 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/lemon_1f34b.png'), Tag(id: 'tag4', name: 'Drink', logoUrl: 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/beer-mug_1f37a.png')],
+      recipeCategory: RecipeCategory(id: 'recipe5', name: 'Dinner'),
+    ),
     Recipe(
-        id: 'id10',
-        name: 'Japan',
-        time: '10',
-        energy: 268,
-        imageUrl: 'https://boostifly.com/uiux/delites/walnut_and_nuts.png',
-        tags: [
-          Tag(
-              id: 'tag1',
-              name: 'Foods',
-              logoUrl:
-                  'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/meat-on-bone_1f356.png'),
-          Tag(
-              id: 'tag2',
-              name: 'Fruit',
-              logoUrl:
-                  'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/lemon_1f34b.png'),
-          Tag(
-              id: 'tag4',
-              name: 'Drink',
-              logoUrl:
-                  'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/beer-mug_1f37a.png')
-        ],
-        recipeCategory: RecipeCategory(id: 'recipe5', name: 'Dinner')),
+      id: 'id11',
+      name: 'Salmon Tomato Sauce',
+      time: '10',
+      energy: 268,
+      imageUrl: 'https://boostifly.com/uiux/delites/salmon_tomato_sauce.png',
+      tags: [Tag(id: 'tag1', name: 'Foods', logoUrl: 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/meat-on-bone_1f356.png'), Tag(id: 'tag2', name: 'Fruit', logoUrl: 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/lemon_1f34b.png'), Tag(id: 'tag4', name: 'Drink', logoUrl: 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/beer-mug_1f37a.png')],
+      recipeCategory: RecipeCategory(id: 'recipe2', name: 'Breakfast'),
+    ),
   ];
 
   List<Recipe> findAll() {

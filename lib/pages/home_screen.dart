@@ -1,10 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:delites/models/recipe-category.dart';
 import 'package:delites/models/recipe.dart';
 import 'package:delites/models/tag.dart';
+import 'package:delites/services/recipe-category-service.dart';
 import 'package:delites/services/recipe-service.dart';
 import 'package:delites/services/tag-service.dart';
 import 'package:delites/size_config.dart';
 import 'package:delites/style.dart';
+import 'package:delites/widgets/footer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
@@ -36,8 +39,10 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     final tagService = Provider.of<TagService>(context, listen: false);
     final recipeService = Provider.of<RecipeService>(context, listen: false);
+    final recipeCategoryService = Provider.of<RecipeCategoryService>(context, listen: false);
     final List<Tag> tags = tagService.findAll();
     final List<Recipe> recipes = recipeService.findAll();
+    final List<RecipeCategory> recipeCategories = recipeCategoryService.findAll();
     return SafeArea(
       child: Container(
         width: double.infinity,
@@ -317,7 +322,7 @@ class Home extends StatelessWidget {
                                                     flex: 16,
                                                     child: Container(
                                                       width: double.infinity,
-                                                      margin: EdgeInsets.only(left: 10),
+                                                      margin: EdgeInsets.only(left: 10, bottom: 8),
                                                       child: FractionallySizedBox(
                                                         widthFactor: 0.8,
                                                         alignment: Alignment.centerLeft,
@@ -394,143 +399,245 @@ class Home extends StatelessWidget {
                           ],
                         ),
                       ),
+                      Container(
+                        padding: EdgeInsets.only(bottom: 16),
+                        child: ListRecipeCategories(recipeCategories: recipeCategories, recipeService: recipeService),
+                      ),
                     ],
                   ),
                 ),
               ),
             ),
-            Expanded(
-              flex: 10,
-              child: Container(
-                margin: EdgeInsets.symmetric(vertical: 8,horizontal: 16),
-                child: Row(
-                  children: [
-                    Expanded(
-                      flex: 20,
-                      child: Column(
-                        children: [
-                          Expanded(
-                            flex: 70,
-                            child: SvgPicture.asset(
-                              'assets/images/icon_recipes_fill.svg',
-                            ),
-                          ),
-                          Expanded(
-                            flex: 30,
-                            child: FittedBox(
-                              alignment: Alignment.topCenter,
-                              fit: BoxFit.scaleDown,
-                              child: Text(
-                                'Recipes',
-                                style: Theme.of(context).textTheme.subtitle2,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Expanded(
-                      flex: 20,
-                      child: Column(
-                        children: [
-                          Expanded(
-                            flex: 70,
-                            child: SvgPicture.asset(
-                              'assets/images/icon_search_footer.svg',
-                            ),
-                          ),
-                          Expanded(
-                            flex: 30,
-                            child: FittedBox(
-                              alignment: Alignment.topCenter,
-                              fit: BoxFit.scaleDown,
-                              child: Text(
-                                'Search',
-                                style: Theme.of(context).textTheme.subtitle2,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Expanded(
-                      flex: 20,
-                      child: Column(
-                        children: [
-                          Expanded(
-                            flex: 70,
-                            child: SvgPicture.asset(
-                              'assets/images/icon_cart.svg',
-                            ),
-                          ),
-                          Expanded(
-                            flex: 30,
-                            child: FittedBox(
-                              alignment: Alignment.topCenter,
-                              fit: BoxFit.scaleDown,
-                              child: Text(
-                                'Cart',
-                                style: Theme.of(context).textTheme.subtitle2,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Expanded(
-                      flex: 20,
-                      child: Column(
-                        children: [
-                          Expanded(
-                            flex: 70,
-                            child: SvgPicture.asset(
-                              'assets/images/icon_fav2.svg',
-                            ),
-                          ),
-                          Expanded(
-                            flex: 30,
-                            child: FittedBox(
-                              alignment: Alignment.topCenter,
-                              fit: BoxFit.scaleDown,
-                              child: Text(
-                                'Favourites',
-                                style: Theme.of(context).textTheme.subtitle2,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Expanded(
-                      flex: 20,
-                      child: Column(
-                        children: [
-                          Expanded(
-                            flex: 70,
-                            child: SvgPicture.asset(
-                              'assets/images/icon_profile.svg',
-                            ),
-                          ),
-                          Expanded(
-                            flex: 30,
-                            child: FittedBox(
-                              alignment: Alignment.topCenter,
-                              fit: BoxFit.scaleDown,
-                              child: Text(
-                                'Profile',
-                                style: Theme.of(context).textTheme.subtitle2,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
+            Footer(),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class ListRecipeCategories extends StatelessWidget {
+  const ListRecipeCategories({
+    Key key,
+    @required this.recipeCategories,
+    @required this.recipeService,
+  }) : super(key: key);
+
+  final List<RecipeCategory> recipeCategories;
+  final RecipeService recipeService;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(children: [
+      Container(),
+      ...(recipeCategories.map((value) {
+        if(value.id=='recipe1'){
+          return Container();
+        }
+        return ItemRecipeCategory(currentRecipeCategory: value, recipeService: recipeService);
+      })),
+    ]);
+  }
+}
+
+class ItemRecipeCategory extends StatelessWidget {
+  const ItemRecipeCategory({
+    Key key,
+    @required this.currentRecipeCategory,
+    @required this.recipeService,
+  }) : super(key: key);
+
+  final RecipeCategory currentRecipeCategory;
+  final RecipeService recipeService;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      margin: EdgeInsets.only(top: 32),
+      child: Column(
+        children: [
+          Container(
+            margin: EdgeInsets.symmetric(vertical: 0, horizontal: 16),
+            child: Row(
+              children: [
+                Expanded(
+                  flex: 60,
+                  child: Container(
+                    width: double.infinity,
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      currentRecipeCategory.name,
+                      style: Theme.of(context).textTheme.headline3,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  flex: 40,
+                  child: Container(
+                    width: double.infinity,
+                    alignment: Alignment.centerRight,
+                    child: Text(
+                      'View All',
+                      style: Theme.of(context).textTheme.bodyText1,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          currentRecipeCategory.decription.isEmpty
+              ? Container()
+              : Container(
+                  margin: EdgeInsets.fromLTRB(16, 8, 16, 0),
+                  width: double.infinity,
+                  child: Text(
+                    currentRecipeCategory.decription,
+                    style: Theme.of(context).textTheme.subtitle2,
+                    textAlign: TextAlign.left,
+                  ),
+                ),
+          Container(
+            width: double.infinity,
+            height: 170,
+            child: Container(
+              margin: EdgeInsets.only(top: 8),
+              child: ListView.builder(
+                padding: EdgeInsets.only(left: 16),
+                scrollDirection: Axis.horizontal,
+                itemCount: recipeService.findByRecipeCategoryId(currentRecipeCategory.id).length,
+                itemBuilder: (ctx, index) {
+                  List<Recipe> foundedRecipes = recipeService.findByRecipeCategoryId(currentRecipeCategory.id);
+                  return Container(
+                    width: 280,
+                    height: double.infinity,
+                    child: Card(
+                      clipBehavior: Clip.antiAlias,
+                      shadowColor: AppTheme.borderCard,
+                      elevation: 0,
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10), side: BorderSide(color: AppTheme.borderCard, width: 1.5)),
+                      child: Stack(
+                        children: [
+                          Container(
+                            child: Stack(
+                              children: [
+                                Container(
+                                  width: double.infinity,
+                                  height: double.infinity,
+                                  child: CachedNetworkImage(
+                                    imageUrl: foundedRecipes[index].imageUrl,
+                                    placeholder: (ctx, url) => CircularProgressIndicator(),
+                                    errorWidget: (context, url, error) => Icon(Icons.error),
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                                Container(
+                                  width: double.infinity,
+                                  height: double.infinity,
+                                  alignment: Alignment.bottomLeft,
+                                  child: FractionallySizedBox(
+                                    widthFactor: 1,
+                                    heightFactor: 0.4,
+                                    child: Column(
+                                      children: [
+                                        Expanded(
+                                          flex: 55,
+                                          child: Container(
+                                            width: double.infinity,
+                                            alignment: Alignment.centerLeft,
+                                            margin: EdgeInsets.only(left: 10),
+                                            child: Text(
+                                              foundedRecipes[index].name,
+                                              style: Theme.of(context).textTheme.headline3.copyWith(color: Theme.of(context).scaffoldBackgroundColor),
+                                            ),
+                                          ),
+                                        ),
+                                        Expanded(
+                                          flex: 45,
+                                          child: Container(
+                                            width: double.infinity,
+                                            margin: EdgeInsets.only(left: 10, bottom: 8),
+                                            child: FractionallySizedBox(
+                                              widthFactor: 0.5,
+                                              alignment: Alignment.centerLeft,
+                                              child: Row(
+                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                children: [
+                                                  Flexible(
+                                                    flex: 45,
+                                                    child: Container(
+                                                      height: double.infinity,
+                                                      child: FittedBox(
+                                                        alignment: Alignment.centerLeft,
+                                                        fit: BoxFit.scaleDown,
+                                                        child: Text(
+                                                          foundedRecipes[index].time + ' mins',
+                                                          style: Theme.of(context).textTheme.subtitle2.copyWith(color: Theme.of(context).scaffoldBackgroundColor.withOpacity(0.75)),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Expanded(
+                                                    flex: 10,
+                                                    child: Container(
+                                                      height: double.infinity,
+                                                      child: FractionallySizedBox(
+                                                        heightFactor: 0.2,
+                                                        child: AspectRatio(
+                                                          aspectRatio: 1 / 1,
+                                                          child: SvgPicture.asset(
+                                                            'assets/images/oval.svg',
+                                                            color: Theme.of(context).scaffoldBackgroundColor.withOpacity(0.75),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Expanded(
+                                                    flex: 45,
+                                                    child: Container(
+                                                      height: double.infinity,
+                                                      child: FittedBox(
+                                                        alignment: Alignment.centerLeft,
+                                                        fit: BoxFit.scaleDown,
+                                                        child: Text(
+                                                          foundedRecipes[index].energy.toInt().toString() + ' kcal',
+                                                          style: Theme.of(context).textTheme.subtitle2.copyWith(color: Theme.of(context).scaffoldBackgroundColor.withOpacity(0.75)),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Positioned.fill(
+                            child: Material(
+                              color: Colors.transparent,
+                              child: InkWell(
+                                splashFactory: InkRipple.splashFactory,
+                                splashColor: AppTheme.shadow.withAlpha(100),
+                                onTap: () => null,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

@@ -20,6 +20,7 @@ class AppTheme {
   static const Color fb = Color(0xFF0041A8);
   static const Color twitter = Color(0xFF42AAFF);
   static const Color google = Color(0xFFF2F8FF);
+  static const Color footertext = Color(0xFFC5CEE0);
 
   static final ThemeData lightTheme = ThemeData(
     scaffoldBackgroundColor: AppTheme.bg,
