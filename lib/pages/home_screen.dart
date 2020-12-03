@@ -431,7 +431,7 @@ class ListRecipeCategories extends StatelessWidget {
     return Column(children: [
       Container(),
       ...(recipeCategories.map((value) {
-        if(value.id=='recipe1'){
+        if (value.id == 'recipe1') {
           return Container();
         }
         return ItemRecipeCategory(currentRecipeCategory: value, recipeService: recipeService);
@@ -440,7 +440,7 @@ class ListRecipeCategories extends StatelessWidget {
   }
 }
 
-class ItemRecipeCategory extends StatelessWidget {
+class ItemRecipeCategory extends StatefulWidget {
   const ItemRecipeCategory({
     Key key,
     @required this.currentRecipeCategory,
@@ -449,6 +449,12 @@ class ItemRecipeCategory extends StatelessWidget {
 
   final RecipeCategory currentRecipeCategory;
   final RecipeService recipeService;
+
+  @override
+  _ItemRecipeCategoryState createState() => _ItemRecipeCategoryState();
+}
+
+class _ItemRecipeCategoryState extends State<ItemRecipeCategory> {
 
   @override
   Widget build(BuildContext context) {
@@ -467,7 +473,7 @@ class ItemRecipeCategory extends StatelessWidget {
                     width: double.infinity,
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      currentRecipeCategory.name,
+                      widget.currentRecipeCategory.name,
                       style: Theme.of(context).textTheme.headline3,
                     ),
                   ),
@@ -486,28 +492,28 @@ class ItemRecipeCategory extends StatelessWidget {
               ],
             ),
           ),
-          currentRecipeCategory.decription.isEmpty
+          widget.currentRecipeCategory.decription.isEmpty
               ? Container()
               : Container(
                   margin: EdgeInsets.fromLTRB(16, 8, 16, 0),
                   width: double.infinity,
                   child: Text(
-                    currentRecipeCategory.decription,
+                    widget.currentRecipeCategory.decription,
                     style: Theme.of(context).textTheme.subtitle2,
                     textAlign: TextAlign.left,
                   ),
                 ),
           Container(
             width: double.infinity,
-            height: 170,
+            height: 180,
             child: Container(
               margin: EdgeInsets.only(top: 8),
               child: ListView.builder(
                 padding: EdgeInsets.only(left: 16),
                 scrollDirection: Axis.horizontal,
-                itemCount: recipeService.findByRecipeCategoryId(currentRecipeCategory.id).length,
+                itemCount: widget.recipeService.findByRecipeCategoryId(widget.currentRecipeCategory.id).length,
                 itemBuilder: (ctx, index) {
-                  List<Recipe> foundedRecipes = recipeService.findByRecipeCategoryId(currentRecipeCategory.id);
+                  List<Recipe> foundedRecipes = widget.recipeService.findByRecipeCategoryId(widget.currentRecipeCategory.id);
                   return Container(
                     width: 280,
                     height: double.infinity,
@@ -626,6 +632,43 @@ class ItemRecipeCategory extends StatelessWidget {
                                 splashFactory: InkRipple.splashFactory,
                                 splashColor: AppTheme.shadow.withAlpha(100),
                                 onTap: () => null,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            width: double.infinity,
+                            height: double.infinity,
+                            alignment: Alignment.topLeft,
+                            padding: EdgeInsets.fromLTRB(10, 8, 0, 0),
+                            child: FractionallySizedBox(
+                              heightFactor: 0.25,
+                              child: AspectRatio(
+                                aspectRatio: 1 / 1,
+                                child: CircleAvatar(
+                                  backgroundColor: AppTheme.secondaryBg.withOpacity(0.25),
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        foundedRecipes[index].isFavourite = !foundedRecipes[index].isFavourite;
+                                      });
+                                    },
+                                    child: Container(
+                                      width: double.infinity,
+                                      height: double.infinity,
+                                      alignment: Alignment.center,
+                                      child: FractionallySizedBox(
+                                        heightFactor: 0.7,
+                                        child: foundedRecipes[index].isFavourite
+                                            ? SvgPicture.asset(
+                                                'assets/images/icon_fav2_fill.svg',
+                                              )
+                                            : SvgPicture.asset(
+                                                'assets/images/icon_fav2.svg',
+                                              ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
                               ),
                             ),
                           ),

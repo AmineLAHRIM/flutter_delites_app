@@ -9,7 +9,7 @@ class Recipe {
   String imageUrl;
   RecipeCategory recipeCategory;
   List<Tag> tags;
+  bool isFavourite = false;
 
-  Recipe({this.id, this.name, this.time, this.energy, this.imageUrl,
-      this.recipeCategory, this.tags});
+  Recipe({this.id, this.name, this.time, this.energy, this.imageUrl, this.recipeCategory, this.tags});
 }
