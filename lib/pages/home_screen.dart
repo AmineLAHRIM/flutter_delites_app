@@ -50,9 +50,14 @@ class Home extends StatelessWidget {
         child: Column(
           children: [
             Expanded(
-              flex: 25,
+              flex: 20,
               child: Container(
-                color: Theme.of(context).scaffoldBackgroundColor,
+                decoration: BoxDecoration(
+                  color: Theme.of(context).scaffoldBackgroundColor,
+                  border: Border(
+                    bottom: BorderSide(width: 1, color: AppTheme.shadow),
+                  ),
+                ),
                 child: Column(
                   children: [
                     Expanded(
@@ -61,10 +66,10 @@ class Home extends StatelessWidget {
                         children: [
                           Expanded(
                             child: Container(
-                              alignment: Alignment(0.0, 0.0),
+                              alignment: Alignment.center,
                               child: FractionallySizedBox(
                                 widthFactor: 1,
-                                heightFactor: 0.6,
+                                heightFactor: 0.75,
                                 child: Card(
                                   margin: EdgeInsets.fromLTRB(16, 4, 16, 4),
                                   elevation: 0,
@@ -116,15 +121,16 @@ class Home extends StatelessWidget {
                       flex: 50,
                       child: Container(
                         child: ListView.builder(
+                          padding: EdgeInsets.fromLTRB(16, 0, 0, 0),
                           scrollDirection: Axis.horizontal,
                           itemCount: tags.length,
                           itemBuilder: (ctx, index) => Container(
                             width: 120,
                             child: FractionallySizedBox(
-                              heightFactor: 0.55,
+                              heightFactor: 0.6,
                               child: Card(
                                 clipBehavior: Clip.antiAlias,
-                                margin: EdgeInsets.fromLTRB(16, 0, 0, 0),
+                                margin: EdgeInsets.fromLTRB(0, 0, 16, 0),
                                 elevation: 0,
                                 color: Color(int.parse('0xFF' + tags[index].bgColor.toString())),
                                 shape: RoundedRectangleBorder(
@@ -455,7 +461,6 @@ class ItemRecipeCategory extends StatefulWidget {
 }
 
 class _ItemRecipeCategoryState extends State<ItemRecipeCategory> {
-
   @override
   Widget build(BuildContext context) {
     return Container(
