@@ -1,3 +1,6 @@
+import 'package:delites/pages/ingredients_screen.dart';
+import 'package:delites/services/Ingredient-service.dart';
+import 'package:delites/services/ingredient-category-service.dart';
 import 'package:delites/services/recipe-category-service.dart';
 import 'package:delites/services/tag-service.dart';
 import 'package:provider/provider.dart';
@@ -33,6 +36,12 @@ class MyApp extends StatelessWidget {
             ChangeNotifierProvider.value(
               value: TagService(),
             ),
+            ChangeNotifierProvider.value(
+              value: IngredientCategoryService(),
+            ),
+            ChangeNotifierProvider.value(
+              value: IngredientService(),
+            ),
           ],
           child: MaterialApp(
             debugShowCheckedModeBanner: false,
@@ -46,6 +55,7 @@ class MyApp extends StatelessWidget {
               ResetPasswordScreen.routeName: (context) => ResetPasswordScreen(),
               VerificationScreen.routeName: (context) => VerificationScreen(),
               HomeScreen.routeName: (context) => HomeScreen(),
+              IngredientsScreen.routeName: (context) => IngredientsScreen(),
             },
           ),
         );

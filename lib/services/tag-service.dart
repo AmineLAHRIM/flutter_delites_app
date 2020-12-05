@@ -26,7 +26,7 @@ class TagService extends ChangeNotifier {
         name: 'Drink',
         logoUrl:
             'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/beer-mug_1f37a.png',
-        bgColor: 'FF9D2B')
+        bgColor: 'FF9D2B'),
   ];
 
   List<Tag> findAll() {

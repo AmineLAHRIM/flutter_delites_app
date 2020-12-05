@@ -7,9 +7,14 @@ class Ingredient{
   double weight;
   Unit unit;
   double price;
+  String imageUrl;
   double promoPrice;
   double shippingPrice;
   IngredientCategory ingredientCategory;
+  bool isFavourite = false;
+
+
+  Ingredient({this.id, this.name, this.weight, this.unit, this.price,this.imageUrl, this.promoPrice, this.shippingPrice, this.ingredientCategory});
 }
 
 
