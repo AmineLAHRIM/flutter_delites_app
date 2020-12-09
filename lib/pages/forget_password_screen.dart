@@ -1,3 +1,4 @@
+import 'package:delites/pages/reset_password_screen.dart';
 import 'package:delites/style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -107,7 +108,9 @@ class ForgetPasswordScreen extends StatelessWidget {
                   child: Container(
                     margin: EdgeInsets.fromLTRB(16, 4, 16, 4),
                     child: RaisedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, ResetPasswordScreen.routeName);
+                      },
                       color: AppTheme.primary,
                       elevation: 2,
                       textColor: Colors.white,
@@ -116,7 +119,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                         height: double.infinity,
                         alignment: Alignment.center,
                         child: Text(
-                          'Sign In',
+                          'Reset Password',
                           style: Theme.of(context)
                               .textTheme
                               .subtitle1

@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
           child: MaterialApp(
             debugShowCheckedModeBanner: false,
             theme: AppTheme.lightTheme,
-            home: HomeScreen(),
+            home: WelcomeScreen(),
             routes: {
               WelcomeScreen.routeName: (context) => WelcomeScreen(),
               ForgetPasswordScreen.routeName: (context) =>

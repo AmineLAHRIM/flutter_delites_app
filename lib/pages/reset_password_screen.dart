@@ -1,3 +1,4 @@
+import 'package:delites/pages/verification_screen.dart';
 import 'package:delites/style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -172,7 +173,9 @@ class ResetPasswordScreen extends StatelessWidget {
                   child: Container(
                     margin: EdgeInsets.fromLTRB(16, 4, 16, 4),
                     child: RaisedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, VerificationScreen.routeName);
+                      },
                       color: AppTheme.primary,
                       elevation: 2,
                       textColor: Colors.white,
@@ -181,7 +184,7 @@ class ResetPasswordScreen extends StatelessWidget {
                         height: double.infinity,
                         alignment: Alignment.center,
                         child: Text(
-                          'Sign In',
+                          'Verification',
                           style: Theme.of(context)
                               .textTheme
                               .subtitle1

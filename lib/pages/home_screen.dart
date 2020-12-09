@@ -142,7 +142,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 child: Container(
                                                   child: CachedNetworkImage(
                                                     imageUrl: tags[index].logoUrl,
-                                                    placeholder: (ctx, url) => Center(child: CircularProgressIndicator()),
                                                     errorWidget: (context, url, error) => Icon(Icons.error),
                                                   ),
                                                 ),

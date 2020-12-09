@@ -1,4 +1,5 @@
 import 'package:delites/pages/forget_password_screen.dart';
+import 'package:delites/pages/home_screen.dart';
 import 'package:delites/pages/register_screen.dart';
 import 'package:delites/pages/verification_screen.dart';
 import 'package:delites/size_config.dart';
@@ -202,7 +203,7 @@ class Welcome extends StatelessWidget {
               margin: EdgeInsets.fromLTRB(16, 40, 16, 40),
               child: RaisedButton(
                 onPressed: () {
-                  Navigator.of(context).pushNamed(VerificationScreen.routeName);
+                  Navigator.of(context).pushNamed(HomeScreen.routeName);
                 },
                 color: AppTheme.primary,
                 elevation: 2,
