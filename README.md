@@ -1,6 +1,9 @@
 # delites
 
-A new Flutter application.
+A new Flutter application(Android IOS) for Recipes.
+
+# APK LINK
+https://drive.google.com/file/d/1jgQRyXRgo-YiXkbnMrpwnIy2PMw4t4n9/view?usp=sharing
 
 ## Getting Started
 
