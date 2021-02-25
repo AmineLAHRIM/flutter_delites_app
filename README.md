@@ -2,9 +2,6 @@
 
 A new Flutter application(Android IOS) for Recipes.
 
-## APK Link
-https://drive.google.com/file/d/1jgQRyXRgo-YiXkbnMrpwnIy2PMw4t4n9/view?usp=sharing
-
 ## Getting Started
 
 This project is a starting point for a Flutter application.
